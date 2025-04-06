@@ -2,7 +2,7 @@
 
 ![FWX Reward Calculator](https://via.placeholder.com/800x400.png?text=FWX+Reward+Calculator+Preview)  
 ```markdown
-     ![Screenshot 1](screenshots/screenshot1.png)
+     ![Screenshot 1](screenshot1.png)
 ```
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/your-username/fwx-reward-calculator) ![GitHub last commit](https://img.shields.io/github/last-commit/your-username/fwx-reward-calculator)

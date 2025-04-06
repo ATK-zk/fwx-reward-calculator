@@ -29,13 +29,13 @@ The **FWX Reward Calculator** is a sleek, user-friendly tool designed to calcula
 Want to try it locally? Here’s how:
 1. Clone the repo:
    ```bash
-   git clone https://github.com/ATK-zk/fwx-reward-calculator.git
+   git clone https://github.com/your-username/fwx-reward-calculator.git
 
 2. Open index.html in your browser and start calculating!
 
 ## Deployment 🌏
 This project is live on GitHub Pages:
-https://your-username.github.io/fwx-reward-calculator 
+https://ATK-zk.github.io/fwx-reward-calculator 
 
 ## License 
 This project is licensed under the MIT License

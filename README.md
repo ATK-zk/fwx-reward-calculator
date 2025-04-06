@@ -2,8 +2,6 @@
 
 ![FWX Reward Calculator]([https://via.placeholder.com/800x400.png?text=FWX+Reward+Calculator+Preview](https://media-hosting.imagekit.io/88d04302f21c4356/screenshot1.png?Expires=1838579425&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=LGzSKqmH9KW6nUOBGsenAcHjy9aAUQpmaFS4yeLdJjLlTqYtKOOixRQhAPpDUdVkTmMX4loEtWDRmMMo1g8xldn2ZKu18dTVm3sA8PovTB7lBa7LsvtA61JnacIglRp-jNvjq-SsAOLkN~8z0I0yc6dYiPswZf6I4QKXFl8L76az5mOysSUGu~yxksfY6Wi6TPjIK6esVdK9kobefs7ZttQksiGXirqUZKVJ~FrNUR9VYW5xhaOYs-4MvWICYl950En2aLvFAJLG-3LyE98MV2Xj~EtQ2m4nb2C9txIasPfy90zLqA7UWFpDJs2tO3Fu-tKmtflq2U29P6KkWC8Ysg__))  
 
-![GitHub repo size](https://img.shields.io/github/repo-size/your-username/fwx-reward-calculator) ![GitHub last commit](https://img.shields.io/github/last-commit/your-username/fwx-reward-calculator)
-
 ## Overview 🚀
 The **FWX Reward Calculator** is a sleek, user-friendly tool designed to calculate rewards for FWX users. Built from scratch with HTML, CSS, and JavaScript, it’s lightweight with no external dependencies—pure coding magic! 🪄 This project is a proud part of my portfolio, showcasing my web development skills.
 

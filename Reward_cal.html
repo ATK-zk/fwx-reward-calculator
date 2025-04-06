@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FWX Reward Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #3a0ca3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 520px;
+      width: 100%;
+      color: #ffffff;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      animation: subtleFloat 4s ease-in-out infinite;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #e0aaff, #c0fdff, #e0aaff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(224, 170, 255, 0.8);
+    }
+
+    label {
+      margin-top: 20px;
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      color: #e0d6f5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #c77dff;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(199, 125, 255, 0.3);
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 300;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(90deg, #9b5de5, #f15bb5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(155, 93, 229, 0.4);
+    }
+
+    button::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      top: 50%;
+      left: -50px;
+      transform: translateY(-50%);
+      animation: sparkle 2s infinite;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #f15bb5, #9b5de5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(155, 93, 229, 0.6);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .overlay.show {
+      display: flex;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .popup {
+      background: linear-gradient(135deg, #2d004d, #4b0082);
+      color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      animation: popupZoom 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .reward-amount {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #c0fdff;
+      text-shadow: 0 0 20px rgba(192, 253, 255, 0.8);
+    }
+
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes sparkle {
+      0% { left: -50px; }
+      20% { left: 120%; }
+      100% { left: 120%; }
+    }
+
+    @keyframes popupZoom {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      input, select, button {
+        font-size: 15px;
+      }
+
+      .popup {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FWX Reward Calculator</h1>
+
+    <label>% Pool Prize</label>
+    <input type="number" id="poolPrize" placeholder="e.g. 0.5">
+
+    <label>Points</label>
+    <input type="number" id="myPoints" placeholder="e.g. 50000">
+
+    <label>Your Tier</label>
+    <select id="ownTier">
+      <option value="1">Tier 1</option>
+      <option value="1.05">Tier 2</option>
+      <option value="1.1">Tier 3</option>
+      <option value="1.15">Tier 4</option>
+    </select>
+
+    <label>Referee Tier</label>
+    <select id="bonusReferee">
+      <option value="1">Tier 1</option>
+      <option value="1.05">Tier 2</option>
+      <option value="1.1">Tier 3</option>
+      <option value="1.15">Tier 4</option>
+    </select>
+
+    <label>Over 5 Referrals?</label>
+    <select id="bonusRef">
+      <option value="1.1">Yes</option>
+      <option value="1">No</option>
+    </select>
+
+    <button onclick="calculateReward()">Calculate $B4FWX</button>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closePopup(event)">
+    <div class="popup" onclick="event.stopPropagation();">
+      <div class="reward-amount" id="animatedReward">0</div>
+    </div>
+  </div>
+
+  <audio id="rewardSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-notification-wave-alert-987.mp3"></audio>
+
+  <script>
+    function animateNumber(el, start, end, duration) {
+      let startTimestamp = null;
+      const step = timestamp => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        el.innerText = `${value.toLocaleString()} $B4FWX`;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function calculateReward() {
+      const poolPrize = parseFloat(document.getElementById('poolPrize').value);
+      const myPoints = parseFloat(document.getElementById('myPoints').value);
+      const ownTier = parseFloat(document.getElementById('ownTier').value);
+      const bonusReferee = parseFloat(document.getElementById('bonusReferee').value);
+      const bonusRef = parseFloat(document.getElementById('bonusRef').value);
+      const rewardDisplay = document.getElementById('animatedReward');
+      const overlay = document.getElementById('overlay');
+      const sound = document.getElementById('rewardSound');
+
+      if (isNaN(poolPrize) || isNaN(myPoints)) {
+        alert("Please fill in all fields correctly.");
+        return;
+      }
+
+      const reward = poolPrize * myPoints * ownTier * bonusReferee * bonusRef * 9.51507929;
+
+      animateNumber(rewardDisplay, 0, reward, 1500);
+      overlay.classList.add('show');
+      sound.currentTime = 0;
+      sound.play();
+    }
+
+    function closePopup(e) {
+      document.getElementById('overlay').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
